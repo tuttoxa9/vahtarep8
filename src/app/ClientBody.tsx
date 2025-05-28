@@ -105,7 +105,7 @@ export default function ClientBody({
       </div>
 
       {/* Мобильная нижняя навигация */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border/30 shadow-2xl">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[10010] bg-white/95 backdrop-blur-md border-t border-border/30 shadow-2xl">
         <div className="flex items-center justify-around py-3 px-4">
           {navItems.map((item) => (
             <Link

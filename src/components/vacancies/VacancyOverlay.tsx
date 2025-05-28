@@ -177,7 +177,7 @@ export default function VacancyOverlay({
           </div>
 
           {/* Основной контент */}
-          <div className="relative z-20 px-6 pb-12 bg-white -mt-6 rounded-t-3xl pt-10 md:px-28">
+          <div className="relative z-20 px-6 pb-24 md:pb-12 bg-white -mt-6 rounded-t-3xl pt-10 md:px-28">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Левая колонка */}
