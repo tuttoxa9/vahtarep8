@@ -218,21 +218,36 @@ export default function VacancyOverlay({
 
                     {vacancy.requirements && (
                       <div className="prose max-w-none">
-                        <div className="flex flex-row items-center justify-between gap-4 mb-4 md:block">
+                        <div className="flex flex-row items-start justify-between gap-4 mb-4 md:block">
                           <h3 className="text-2xl font-bold text-gray-900">Требования</h3>
-                          {/* Кнопка отклика для мобильной версии - отдельный блок справа */}
-                          <div className="md:hidden flex-shrink-0">
-                            <Button
-                              className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 whitespace-nowrap text-sm"
-                              onClick={openApplicationModal}
-                            >
-                              <User className="h-4 w-4 mr-1" />
-                              Откликнуться на вакансию
-                            </Button>
-                          </div>
+                          {/* Компактный блок преимуществ для мобильной версии */}
+                          {vacancy.benefits && (
+                            <div className="md:hidden flex-shrink-0 bg-red-50 rounded-lg p-3 border border-red-200 max-w-[140px]">
+                              <div className="space-y-1">
+                                {vacancy.benefits.slice(0, 3).map((benefit, index) => (
+                                  <div key={index} className="flex items-center gap-1">
+                                    <CheckCircle className="h-3 w-3 text-red-600 flex-shrink-0" />
+                                    <span className="text-xs text-red-700 leading-tight">{benefit.title}</span>
+                                  </div>
+                                ))}
+                                {vacancy.benefits.length > 3 && (
+                                  <div className="text-xs text-red-600 font-medium">+{vacancy.benefits.length - 3} еще</div>
+                                )}
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="text-gray-700 whitespace-pre-wrap leading-relaxed">
                           {vacancy.requirements}
+                        </div>
+                        {/* Компактная кнопка отклика внизу секции требований */}
+                        <div className="md:hidden mt-4 text-center">
+                          <Button
+                            className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200"
+                            onClick={openApplicationModal}
+                          >
+                            Откликнуться
+                          </Button>
                         </div>
                       </div>
                     )}
