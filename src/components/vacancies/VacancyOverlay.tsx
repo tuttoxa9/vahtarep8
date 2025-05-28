@@ -254,7 +254,7 @@ export default function VacancyOverlay({
             </div>
 
             {/* Дополнительное пустое пространство для удлинения страницы */}
-            <div className="h-96 md:h-0"></div>
+            <div className="h-48 md:h-0"></div>
 
             {/* Кнопка отклика в самом низу для мобильной версии */}
             <div className="md:hidden fixed bottom-20 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
