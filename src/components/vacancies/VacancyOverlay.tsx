@@ -22,6 +22,7 @@ import {
   CheckCircle,
   Gift,
   X,
+  ExternalLink,
 } from "lucide-react";
 
 interface VacancyOverlayProps {
@@ -211,6 +212,27 @@ export default function VacancyOverlay({
                         {vacancy.description && (
                           <div className="whitespace-pre-wrap text-base md:text-lg">
                             {vacancy.description}
+                          </div>
+                        )}
+
+                        {/* Кнопка "Узнать подробнее" в конце описания */}
+                        {vacancy.detailsUrl && (
+                          <div className="mt-6 pt-4 border-t border-gray-200">
+                            <Button
+                              asChild
+                              variant="outline"
+                              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-none shadow-lg hover:shadow-xl transition-all duration-300 font-medium px-6 py-3 rounded-lg"
+                            >
+                              <a
+                                href={vacancy.detailsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2"
+                              >
+                                <ExternalLink className="h-5 w-5" />
+                                Узнать подробнее
+                              </a>
+                            </Button>
                           </div>
                         )}
                       </div>

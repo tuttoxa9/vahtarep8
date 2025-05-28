@@ -13,6 +13,7 @@ export interface Vacancy {
   employmentType?: string;
   experienceRequired?: string;
   companyName?: string;
+  detailsUrl?: string; // Ссылка для кнопки "Узнать подробнее"
 }
 
 export interface Application {
@@ -54,4 +55,5 @@ export interface FirestoreVacancy {
   imageUrl?: string;
   viewCount?: number;
   createdAt: FirebaseTimestamp;
+  detailsUrl?: string; // Ссылка для кнопки "Узнать подробнее"
 }
