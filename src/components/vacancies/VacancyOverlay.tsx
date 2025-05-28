@@ -216,32 +216,6 @@ export default function VacancyOverlay({
                       </div>
                     </div>
 
-                    {/* Компактный блок преимуществ для мобильной версии */}
-                    {vacancy.benefits && (
-                      <div className="md:hidden bg-red-50 rounded-lg p-3 border border-red-200 mb-4">
-                        <div className="space-y-1">
-                          {vacancy.benefits.slice(0, 3).map((benefit, index) => (
-                            <div key={index}>
-                              <span className="text-xs text-red-700 leading-tight">{benefit.title}</span>
-                            </div>
-                          ))}
-                          {vacancy.benefits.length > 3 && (
-                            <div className="text-xs text-red-600 font-medium">+{vacancy.benefits.length - 3} еще</div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Кнопка отклика после преимуществ */}
-                    <div className="md:hidden mb-6 text-center">
-                      <Button
-                        className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200"
-                        onClick={openApplicationModal}
-                      >
-                        Откликнуться
-                      </Button>
-                    </div>
-
                     {vacancy.requirements && (
                       <div className="prose max-w-none">
                         <h3 className="text-2xl font-bold mb-4 text-gray-900">Требования</h3>
@@ -277,6 +251,16 @@ export default function VacancyOverlay({
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Кнопка отклика в самом низу для мобильной версии */}
+            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
+              <Button
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition-all duration-200"
+                onClick={openApplicationModal}
+              >
+                Откликнуться
+              </Button>
             </div>
           </div>
         </motion.div>
