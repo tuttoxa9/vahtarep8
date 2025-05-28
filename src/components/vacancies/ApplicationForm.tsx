@@ -47,24 +47,36 @@ export default function ApplicationForm({ vacancyId, className }: ApplicationFor
     setIsSubmitting(true);
 
     try {
-      // Используем асинхронную версию функции submitApplication
-      const applicationId = await submitApplication({
-        vacancyId,
-        applicantName: data.name,
-        applicantPhone: data.phone,
-        applicantEmail: data.email,
-        message: data.message,
+      // Отправляем заявку через Netlify функцию
+      const response = await fetch('/.netlify/functions/submit-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          vacancyId,
+          applicantName: data.name,
+          applicantPhone: data.phone,
+          applicantEmail: data.email,
+          message: data.message,
+        }),
       });
 
-      if (applicationId) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setSubmitted(true);
         toast.success("Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.");
+
+        // Сбрасываем форму
+        form.reset();
       } else {
-        toast.error("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
+        console.error("Server error:", result);
+        toast.error(result.error || "Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      toast.error("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
+      toast.error("Произошла ошибка сети. Пожалуйста, проверьте подключение к интернету и попробуйте еще раз.");
     } finally {
       setIsSubmitting(false);
     }

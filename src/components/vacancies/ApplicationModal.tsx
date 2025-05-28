@@ -56,41 +56,36 @@ export default function ApplicationModal({ vacancy, isOpen, onClose }: Applicati
     setIsSubmitting(true);
 
     try {
-      // Отправляем данные в Netlify Function для уведомления в Telegram
-      const response = await fetch("/.netlify/functions/send-telegram-notification", {
-        method: "POST",
+      // Отправляем заявку через новую Netlify функцию
+      const response = await fetch('/.netlify/functions/submit-application', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          vacancy: {
-            id: vacancy.id,
-            title: vacancy.title,
-            company: vacancy.company,
-            location: vacancy.location,
-            salary: vacancy.salary,
-          },
-          applicant: {
-            name: data.name,
-            phone: data.phone,
-            email: data.email,
-            message: data.message,
-          },
+          vacancyId: vacancy.id,
+          applicantName: data.name,
+          applicantPhone: data.phone,
+          applicantEmail: data.email,
+          message: data.message,
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setSubmitted(true);
         toast.success("Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.");
-        
+
         // Сбрасываем форму
         form.reset();
       } else {
-        toast.error("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
+        console.error("Server error:", result);
+        toast.error(result.error || "Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      toast.error("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
+      toast.error("Произошла ошибка сети. Пожалуйста, проверьте подключение к интернету и попробуйте еще раз.");
     } finally {
       setIsSubmitting(false);
     }
