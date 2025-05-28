@@ -218,11 +218,10 @@ export default function VacancyOverlay({
 
                     {/* Компактный блок преимуществ для мобильной версии */}
                     {vacancy.benefits && (
-                      <div className="md:hidden bg-red-50 rounded-lg p-3 border border-red-200 mb-6">
+                      <div className="md:hidden bg-red-50 rounded-lg p-3 border border-red-200 mb-4">
                         <div className="space-y-1">
                           {vacancy.benefits.slice(0, 3).map((benefit, index) => (
-                            <div key={index} className="flex items-center gap-1">
-                              <CheckCircle className="h-3 w-3 text-red-600 flex-shrink-0" />
+                            <div key={index}>
                               <span className="text-xs text-red-700 leading-tight">{benefit.title}</span>
                             </div>
                           ))}
@@ -233,20 +232,21 @@ export default function VacancyOverlay({
                       </div>
                     )}
 
+                    {/* Кнопка отклика после преимуществ */}
+                    <div className="md:hidden mb-6 text-center">
+                      <Button
+                        className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200"
+                        onClick={openApplicationModal}
+                      >
+                        Откликнуться
+                      </Button>
+                    </div>
+
                     {vacancy.requirements && (
                       <div className="prose max-w-none">
                         <h3 className="text-2xl font-bold mb-4 text-gray-900">Требования</h3>
                         <div className="text-gray-700 whitespace-pre-wrap leading-relaxed">
                           {vacancy.requirements}
-                        </div>
-                        {/* Компактная кнопка отклика внизу секции требований */}
-                        <div className="md:hidden mt-4 text-center">
-                          <Button
-                            className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200"
-                            onClick={openApplicationModal}
-                          >
-                            Откликнуться
-                          </Button>
                         </div>
                       </div>
                     )}
