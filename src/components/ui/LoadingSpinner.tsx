@@ -21,7 +21,7 @@ export default function LoadingSpinner({ size = "md", className = "" }: LoadingS
         animate={{ rotate: 360 }}
         transition={{
           duration: 1,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
           ease: "linear"
         }}
       />

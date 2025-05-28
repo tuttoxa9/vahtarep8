@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { formatSalary } from "@/lib/utils";
-import { FirestoreVacancy } from "@/types";
+import type { FirestoreVacancy } from "@/types";
 
 interface VacancyCardProps {
   vacancy: FirestoreVacancy;

@@ -15,7 +15,7 @@ import {
   Utensils,
   Shield
 } from 'lucide-react';
-import { Benefit } from '@/types';
+import type { Benefit } from '@/types';
 
 interface BenefitsSectionProps {
   benefits: (Benefit | string)[];

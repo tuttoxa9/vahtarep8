@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
-import { FirestoreVacancy } from "@/types";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import type { FirestoreVacancy } from "@/types";
 
 interface VacancyOverlayContextType {
   selectedVacancy: FirestoreVacancy | null;

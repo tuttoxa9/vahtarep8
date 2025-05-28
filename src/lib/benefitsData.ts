@@ -1,4 +1,4 @@
-import { Benefit } from '@/types';
+import type { Benefit } from '@/types';
 
 // Предустановленные преимущества для выбора
 export const defaultBenefits: Benefit[] = [

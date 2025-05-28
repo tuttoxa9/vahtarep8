@@ -1,6 +1,6 @@
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Benefit } from '@/types';
+import type { Benefit } from '@/types';
 import { defaultBenefits } from './benefitsData';
 
 /**

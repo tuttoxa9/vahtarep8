@@ -1,5 +1,5 @@
 import { defaultBenefits } from './benefitsData';
-import { Benefit } from '@/types';
+import type { Benefit } from '@/types';
 
 /**
  * Функция для конвертации строковых преимуществ в объекты Benefit

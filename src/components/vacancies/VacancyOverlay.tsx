@@ -165,10 +165,7 @@ export default function VacancyOverlay({
 
               <div className="flex-grow flex flex-col justify-center px-6 md:px-28">
                 <div className="space-y-3">
-                  <p className="text-white/90 text-sm md:text-lg font-medium leading-relaxed">
-                    Станьте частью профессиональной команды! Стабильная работа, достойная оплата и комфортные условия ждут вас.
-                  </p>
-                  <h2 className="text-2xl md:text-3xl font-bold mt-3 break-words">
+                  <h2 className="text-2xl md:text-3xl font-bold break-words">
                     {vacancy.title}
                   </h2>
                 </div>
@@ -221,7 +218,19 @@ export default function VacancyOverlay({
 
                     {vacancy.requirements && (
                       <div className="prose max-w-none">
-                        <h3 className="text-2xl font-bold mb-4 text-gray-900">Требования</h3>
+                        <div className="flex flex-row items-center justify-between gap-4 mb-4 md:block">
+                          <h3 className="text-2xl font-bold text-gray-900">Требования</h3>
+                          {/* Кнопка отклика для мобильной версии - отдельный блок справа */}
+                          <div className="md:hidden flex-shrink-0">
+                            <Button
+                              className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 whitespace-nowrap text-sm"
+                              onClick={openApplicationModal}
+                            >
+                              <User className="h-4 w-4 mr-1" />
+                              Откликнуться на вакансию
+                            </Button>
+                          </div>
+                        </div>
                         <div className="text-gray-700 whitespace-pre-wrap leading-relaxed">
                           {vacancy.requirements}
                         </div>
@@ -238,7 +247,8 @@ export default function VacancyOverlay({
                     <BenefitsSection benefits={vacancy.benefits} />
                   )}
 
-                  <div className="bg-red-50 rounded-2xl p-6 border border-red-200">
+                  {/* Блок отклика - скрыт на мобильных устройствах */}
+                  <div className="hidden md:block bg-red-50 rounded-2xl p-6 border border-red-200">
                     <h3 className="text-lg font-semibold mb-4 text-red-900">Откликнуться на вакансию</h3>
                     <p className="text-red-700 mb-4 text-sm">
                       Заинтересованы в этой позиции? Заполните форму и мы свяжемся с вами в ближайшее время.
