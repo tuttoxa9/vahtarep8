@@ -254,7 +254,7 @@ export default function VacancyOverlay({
             </div>
 
             {/* Кнопка отклика в самом низу для мобильной версии */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
+            <div className="md:hidden fixed bottom-20 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
               <Button
                 className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition-all duration-200"
                 onClick={openApplicationModal}
